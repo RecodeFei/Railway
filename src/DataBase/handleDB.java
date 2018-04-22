@@ -36,7 +36,7 @@ public class handleDB {
 			baseinfo.setName(rs.getString("name"));
 			baseinfo.setSex(rs.getString("sex"));
 			baseinfo.setBorn(rs.getDate("born"));
-			baseinfo.setAge(rs.getInt("age"));
+			baseinfo.setAge(rs.getString("age"));
 			baseinfo.setEducation(rs.getString("education"));
 			baseinfo.setWork_time(rs.getDate("work_time"));
 			baseinfo.setTechnical_title(rs.getString("technical_title"));
@@ -57,19 +57,20 @@ public class handleDB {
 		}
 		return baseinfolist;
 	}
+	@SuppressWarnings("deprecation")
 	public void addBaseInfo(Baseinfo baseinfo) throws Exception{
 		//获取数据库连接
 		Connection conn = DBUtil.getConnection();
 		
 		String sql = "insert into railway(team,name,sex,born,age,education,work_time,technical_title,post,political_outlook,skill_level,technical_qualification_one,forensics_time_one,first_review_time_one,second_review_time_one,third_review_time_one,technical_qualification_two,forensics_time_two,first_review_time_two,second_review_time_two,third_review_time_two)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		//String sql = "insert into railway(team,name,sex,born)value(?,?,?,?)";
+		//String sql = "insert into railway(team,name,sex,born,age)value(?,?,?,?,?)";
 		PreparedStatement ptmt = conn.prepareStatement(sql);
 		//Baseinfo baseinfo = new Baseinfo();
 		ptmt.setString(1, baseinfo.getTeam());
 		ptmt.setString(2,baseinfo.getName());
 		ptmt.setString(3,baseinfo.getSex());
 		ptmt.setDate(4, new Date(baseinfo.getBorn().getDate()));
-		ptmt.setInt(5, baseinfo.getAge());
+		ptmt.setString(5, baseinfo.getAge());
 		ptmt.setString(6, baseinfo.getEducation());
 		ptmt.setDate(7, new Date(baseinfo.getWork_time().getDate()));
 		ptmt.setString(8, baseinfo.getTechnical_title());

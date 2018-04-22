@@ -16,7 +16,7 @@ public class Baseinfo {
 	
 	private Date born;
 	
-	private Integer age;
+	private String age;
 	
 	private String education;
 	
@@ -90,11 +90,11 @@ public class Baseinfo {
 		this.born = born;
 	}
 	
-	public Integer getAge(){
+	public String getAge(){
 		return age;
 	}
 	
-	public void setAge(Integer age){
+	public void setAge(String age){
 		this.age = age;
 	}
 	
