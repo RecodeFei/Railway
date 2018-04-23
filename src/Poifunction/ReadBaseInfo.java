@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.xmlbeans.impl.jam.mutable.MPackage;
 
 import DataBase.Baseinfo;
+import DataBase.DBController;
 import DataBase.handleDB;
 
 import tools.ExcelDataRow;
@@ -23,6 +24,7 @@ public class ReadBaseInfo {
             ExcelDataRow excelReader = new ExcelDataRow(filepath);  
             Baseinfo bs = new Baseinfo();
             handleDB db = new handleDB();
+            
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");	          
             Map<Integer, Map<Integer,Object>> map = excelReader.readExcelContent();
            for (int i = 2; i <= map.size(); i++) {  
@@ -53,8 +55,12 @@ public class ReadBaseInfo {
                 bs.setSecond_review_time_two(new Date());
                 bs.setThird_review_time_two(new Date());                           
                 db.addBaseInfo(bs);
-	                
-            }        
+	                	
+            }
+
+            
+            
+            
         }catch (Exception e) {  
             e.printStackTrace();  
         }  

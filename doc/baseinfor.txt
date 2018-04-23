@@ -1,0 +1,21 @@
+team
+name
+sex
+born
+age
+education
+work_time
+technical_title
+post
+political_outlook
+skill_level
+technical_qualification_one
+forensics_time_one
+first_review_time_one
+second_review_time_one
+third_review_time_one
+technical_qualification_two
+forensics_time_two
+first_review_time_two
+Date second_review_time_two
+third_review_time_two
