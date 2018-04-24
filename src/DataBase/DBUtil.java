@@ -6,11 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.poi.xslf.model.geom.IfElseExpression;
+
 
 
 public class DBUtil {
 	
-	private static final String URL="jdbc:mysql://localhost:3306/Railway?useUnicode=true&characterEncoding=utf8";
+	private static final String URL="jdbc:mysql://localhost:3306/Railway?useUnicode=true&characterEncoding=utf8&useSSL=false";
 	
 	private static final String NAME = "root";
 	

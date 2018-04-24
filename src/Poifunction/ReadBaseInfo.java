@@ -24,15 +24,17 @@ public class ReadBaseInfo {
 ;
 	public static void main(String[] args) {  
        try {  
-    		 String aString[];
-            //String filepath = "/data/home/feikuang/workspace/Railway/doc/7.xlsx";
-        	String filepath = "/data/home/feikuang/workspace/Railway/doc/2.xlsx";
+    		 String filepath;	
+        	if (System.getProperties().getProperty("os.name").equals("Mac OS X")) {
+        		 filepath = "/Users/feikuang/eclipse-workspace/Railway/doc/2.xlsx";
+        	}else {
+        		filepath = "/data/home/feikuang/workspace/Railway/doc/2.xlsx";
+			}
         	ExcelBaseinfo excelReader = new ExcelBaseinfo(filepath);  
                  String[] title = excelReader.readExcelTitle();  
         	         System.out.println("获得Excel表格的标题:");  
         	         for (String s : title) {  
-        	              System.out.print(title);  
-        	       
+        	              System.out.print(s);         	       
                   }  
         	Baseinfo bs = new Baseinfo();
             handleDB db = new handleDB();
