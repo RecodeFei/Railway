@@ -23,7 +23,7 @@ public class handleDB {
 		Connection conn = DBUtil.getConnection();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("select id,team,name,sex,born,age,education,work_time,technical_title,post,political_outlook,skill_level,technical_qualification_one,forensics_time_one,first_review_time_one,second_review_time_one,third_review_time_one,technical_qualification_two,forensics_time_two,first_review_time_two,second_review_time_two,third_review_time_two from railway");
+		sb.append("select id,team,name,sex,born,age,education,work_time,technical_title,post,political_outlook,skill_level,technical_qualification_one,forensics_time_one,first_review_time_one,second_review_time_one,third_review_time_one,technical_qualification_two,forensics_time_two,first_review_time_two,second_review_time_two,third_review_time_two from railway_baseinfo");
 		//通过数据库的连接操作数据库，实现增删改查
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		
@@ -36,24 +36,24 @@ public class handleDB {
 			baseinfo.setTeam(rs.getString("team"));
 			baseinfo.setName(rs.getString("name"));
 			baseinfo.setSex(rs.getString("sex"));
-			baseinfo.setBorn(rs.getDate("born"));
+			baseinfo.setBorn(rs.getString("born"));
 			baseinfo.setAge(rs.getString("age"));
 			baseinfo.setEducation(rs.getString("education"));
-			baseinfo.setWork_time(rs.getDate("work_time"));
+			baseinfo.setWork_time(rs.getString("work_time"));
 			baseinfo.setTechnical_title(rs.getString("technical_title"));
 			baseinfo.setPost(rs.getString("post"));
 			baseinfo.setPolitical_outlook(rs.getString("political_outlook"));
 			baseinfo.setSkill_level(rs.getString("skill_level"));
 			baseinfo.setTechnical_qualification_one(rs.getString("technical_qualification_one"));
-			baseinfo.setForensics_time_one(rs.getDate("forensics_time_one"));
-			baseinfo.setFirst_review_time_one(rs.getDate("first_review_time_one"));
-			baseinfo.setSecond_review_time_one(rs.getDate("second_review_time_one"));
-			baseinfo.setThird_review_time_one(rs.getDate("third_review_time_one"));
+			baseinfo.setForensics_time_one(rs.getString("forensics_time_one"));
+			baseinfo.setFirst_review_time_one(rs.getString("first_review_time_one"));
+			baseinfo.setSecond_review_time_one(rs.getString("second_review_time_one"));
+			baseinfo.setThird_review_time_one(rs.getString("third_review_time_one"));
 			baseinfo.setTechnical_qualification_two(rs.getString("technical_qualification_two"));
-			baseinfo.setForensics_time_two(rs.getDate("forensics_time_two"));
-			baseinfo.setFirst_review_time_two(rs.getDate("first_review_time_two"));
-			baseinfo.setSecond_review_time_two(rs.getDate("secode_review_time_two"));
-			baseinfo.setThird_review_time_two(rs.getDate("third_review_time_two"));
+			baseinfo.setForensics_time_two(rs.getString("forensics_time_two"));
+			baseinfo.setFirst_review_time_two(rs.getString("first_review_time_two"));
+			baseinfo.setSecond_review_time_two(rs.getString("second_review_time_two"));
+			baseinfo.setThird_review_time_two(rs.getString("third_review_time_two"));
 			baseinfolist.add(baseinfo);
 		}
 		return baseinfolist;
@@ -70,30 +70,31 @@ public class handleDB {
 		//获取数据库连接
 		Connection conn = DBUtil.getConnection();
 		
-		String sql = "insert into railway(team,name,sex,born,age,education,work_time,technical_title,post,political_outlook,skill_level,technical_qualification_one,forensics_time_one,first_review_time_one,second_review_time_one,third_review_time_one,technical_qualification_two,forensics_time_two,first_review_time_two,second_review_time_two,third_review_time_two)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into railway_baseinfo(team,name,sex,born,age,education,work_time,technical_title,post,political_outlook,skill_level,technical_qualification_one,forensics_time_one,first_review_time_one,second_review_time_one,third_review_time_one,technical_qualification_two,forensics_time_two,first_review_time_two,second_review_time_two,third_review_time_two)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		//String sql = "insert into railway(team,name,sex)value(?,?,?)";
 		PreparedStatement ptmt = conn.prepareStatement(sql);
 		ptmt.setString(1, baseinfo.getTeam());
 		ptmt.setString(2,baseinfo.getName());
 		ptmt.setString(3,baseinfo.getSex());
-		ptmt.setDate(4, new Date(baseinfo.getBorn().getDate()));
+		//ptmt.setDate(4, new Date(baseinfo.getBorn().getDate()));
+		ptmt.setString(4, baseinfo.getBorn());
 		ptmt.setString(5, baseinfo.getAge());
 		ptmt.setString(6, baseinfo.getEducation());
-		ptmt.setDate(7, new Date(baseinfo.getWork_time().getDate()));
+		ptmt.setString(7, baseinfo.getWork_time());
 		ptmt.setString(8, baseinfo.getTechnical_title());
 		ptmt.setString(9, baseinfo.getPost());
 		ptmt.setString(10, baseinfo.getPolitical_outlook());
 		ptmt.setString(11, baseinfo.getSkill_level());
 		ptmt.setString(12, baseinfo.getTechnical_qualification_one());
-		ptmt.setDate(13, new Date(baseinfo.getForensics_time_one().getDate()));
-		ptmt.setDate(14, new Date(baseinfo.getFirst_review_time_one().getDate()));
-		ptmt.setDate(15, new Date(baseinfo.getSecond_review_time_one().getDate()));
-		ptmt.setDate(16, new Date(baseinfo.getThird_review_time_one().getDate()));
+		ptmt.setString(13, baseinfo.getForensics_time_one());
+		ptmt.setString(14, baseinfo.getFirst_review_time_one());
+		ptmt.setString(15, baseinfo.getSecond_review_time_one());
+		ptmt.setString(16, baseinfo.getThird_review_time_one());
 		ptmt.setString(17, baseinfo.getTechnical_qualification_two());
-		ptmt.setDate(18, new Date(baseinfo.getForensics_time_two().getDate()));
-		ptmt.setDate(19, new Date(baseinfo.getFirst_review_time_two().getDate()));
-		ptmt.setDate(20, new Date(baseinfo.getSecond_review_time_two().getDate()));
-		ptmt.setDate(21, new Date(baseinfo.getThird_review_time_two().getDate()));
+		ptmt.setString(18, baseinfo.getForensics_time_two());
+		ptmt.setString(19, baseinfo.getFirst_review_time_two());
+		ptmt.setString(20, baseinfo.getSecond_review_time_two());
+		ptmt.setString(21, baseinfo.getThird_review_time_two());
 		
 		
 		
@@ -109,11 +110,11 @@ public class handleDB {
 	public void updateBaseInfo(Baseinfo baseinfo) throws SQLException{
 		Connection con = DBUtil.getConnection();//拿到数据库连接
 		String sql="" +
-				"update railway "+
-				"set team name=?,sex=?,born=?,age=?,education=?,work_time=?,technical_title=?,post=?,political_outlook=?," +
+				"update railway_baseinfo "+
+				"set team=?,name=?,sex=?,born=?,age=?,education=?,work_time=?,technical_title=?,post=?,political_outlook=?," +
 				"skill_level=?,technical_qualification_one=?,forensics_time_one=?,first_review_time_one=?,second_review_time_one=?," +
-				"third_review_time_one=?,technical_qualification_two=?,forensics_time_two=?,first_review_time_two=?,Date second_review_time_two=?," +
-				"third_review_time_two=?) "+
+				"third_review_time_one=?,technical_qualification_two=?,forensics_time_two=?,first_review_time_two=?,second_review_time_two=?," +
+				"third_review_time_two=? "+
 				"where id=?";//参数用?表示，相当于占位符;
 		/*String sql="" +
 				"update railway "+
@@ -126,24 +127,25 @@ public class handleDB {
 		ptmt.setString(1, baseinfo.getTeam());
 		ptmt.setString(2,baseinfo.getName());
 		ptmt.setString(3,baseinfo.getSex());
-		ptmt.setDate(4, new Date(baseinfo.getBorn().getDate()));
+		//ptmt.setDate(4, new Date(baseinfo.getBorn().getDate()));
+		ptmt.setString(4, baseinfo.getBorn());
 		ptmt.setString(5, baseinfo.getAge());
 		ptmt.setString(6, baseinfo.getEducation());
-		ptmt.setDate(7, new Date(baseinfo.getWork_time().getDate()));
+		ptmt.setString(7, baseinfo.getWork_time());
 		ptmt.setString(8, baseinfo.getTechnical_title());
 		ptmt.setString(9, baseinfo.getPost());
 		ptmt.setString(10, baseinfo.getPolitical_outlook());
 		ptmt.setString(11, baseinfo.getSkill_level());
 		ptmt.setString(12, baseinfo.getTechnical_qualification_one());
-		ptmt.setDate(13, new Date(baseinfo.getForensics_time_one().getDate()));
-		ptmt.setDate(14, new Date(baseinfo.getFirst_review_time_one().getDate()));
-		ptmt.setDate(15, new Date(baseinfo.getSecond_review_time_one().getDate()));
-		ptmt.setDate(16, new Date(baseinfo.getThird_review_time_one().getDate()));
+		ptmt.setString(13, baseinfo.getForensics_time_one());
+		ptmt.setString(14, baseinfo.getFirst_review_time_one());
+		ptmt.setString(15, baseinfo.getSecond_review_time_one());
+		ptmt.setString(16, baseinfo.getThird_review_time_one());
 		ptmt.setString(17, baseinfo.getTechnical_qualification_two());
-		ptmt.setDate(18, new Date(baseinfo.getForensics_time_two().getDate()));
-		ptmt.setDate(19, new Date(baseinfo.getFirst_review_time_two().getDate()));
-		ptmt.setDate(20, new Date(baseinfo.getSecond_review_time_two().getDate()));
-		ptmt.setDate(21, new Date(baseinfo.getThird_review_time_two().getDate()));
+		ptmt.setString(18, baseinfo.getForensics_time_two());
+		ptmt.setString(19, baseinfo.getFirst_review_time_two());
+		ptmt.setString(20, baseinfo.getSecond_review_time_two());
+		ptmt.setString(21, baseinfo.getThird_review_time_two());
 		ptmt.setInt(22, baseinfo.getId());
 		
 		ptmt.execute();
@@ -158,7 +160,7 @@ public class handleDB {
 	public void delteBaseInfo(Integer id) throws SQLException{
 		Connection con = DBUtil.getConnection();//拿到数据连接
 		String sql = "" +
-					"delete from railway " +
+					"delete from railway_baseinfo " +
 				    "where id=?";
 		//预编译语句
 		PreparedStatement ptmt = con.prepareStatement(sql);
@@ -178,7 +180,7 @@ public class handleDB {
 		Baseinfo bs = null;
 		Connection con = DBUtil.getConnection();
 		String sql=""+
-				"select * from railway "+
+				"select * from railway_baseinfo "+
 				"where id=?";
 		PreparedStatement ptmt = con.prepareStatement(sql);
 		ptmt.setInt(1, id);
@@ -194,24 +196,24 @@ public class handleDB {
 			bs.setTeam(rs.getString("team"));
 			bs.setName(rs.getString("name"));
 			bs.setSex(rs.getString("sex"));
-			bs.setBorn(rs.getDate("born"));
+			bs.setBorn(rs.getString("born"));
 			bs.setAge(rs.getString("age"));
 			bs.setEducation(rs.getString("education"));
-			bs.setWork_time(rs.getDate("work_time"));
+			bs.setWork_time(rs.getString("work_time"));
 			bs.setTechnical_title(rs.getString("technical_title"));
 			bs.setPost(rs.getString("post"));
 			bs.setPolitical_outlook(rs.getString("political_outlook"));
 			bs.setSkill_level(rs.getString("skill_level"));
 			bs.setTechnical_qualification_one(rs.getString("technical_qualification_one"));
-			bs.setForensics_time_one(rs.getDate("forensics_time_one"));
-			bs.setFirst_review_time_one(rs.getDate("first_review_time_one"));
-			bs.setSecond_review_time_one(rs.getDate("second_review_time_one"));
-			bs.setThird_review_time_one(rs.getDate("third_review_time_one"));
+			bs.setForensics_time_one(rs.getString("forensics_time_one"));
+			bs.setFirst_review_time_one(rs.getString("first_review_time_one"));
+			bs.setSecond_review_time_one(rs.getString("second_review_time_one"));
+			bs.setThird_review_time_one(rs.getString("third_review_time_one"));
 			bs.setTechnical_qualification_two(rs.getString("technical_qualification_two"));
-			bs.setForensics_time_two(rs.getDate("forensics_time_two"));
-			bs.setFirst_review_time_two(rs.getDate("first_review_time_two"));
-			bs.setSecond_review_time_two(rs.getDate("secode_review_time_two"));
-			bs.setThird_review_time_two(rs.getDate("third_review_time_two"));
+			bs.setForensics_time_two(rs.getString("forensics_time_two"));
+			bs.setFirst_review_time_two(rs.getString("first_review_time_two"));
+			bs.setSecond_review_time_two(rs.getString("second_review_time_two"));
+			bs.setThird_review_time_two(rs.getString("third_review_time_two"));
 		}
 		return bs;
 		
@@ -225,7 +227,7 @@ public class handleDB {
 		List<Baseinfo> result = new ArrayList<Baseinfo>();
 		Connection con = DBUtil.getConnection();
 		StringBuffer sBuffer = new StringBuffer();
-		sBuffer.append("select * from railway where 1=1 ");//注意where 1=1 的小技巧
+		sBuffer.append("select * from railway_baseinfo where 1=1 ");//注意where 1=1 的小技巧
 		//sBuffer.append("where name like ? and skill_level like ?");
 		if(params !=null && params.size()>0){//先判断集合是否为空
 //遍历集合
@@ -245,24 +247,24 @@ public class handleDB {
 			bs.setTeam(rs.getString("team"));
 			bs.setName(rs.getString("name"));
 			bs.setSex(rs.getString("sex"));
-			bs.setBorn(rs.getDate("born"));
+			bs.setBorn(rs.getString("born"));
 			bs.setAge(rs.getString("age"));
 			bs.setEducation(rs.getString("education"));
-			bs.setWork_time(rs.getDate("work_time"));
+			bs.setWork_time(rs.getString("work_time"));
 			bs.setTechnical_title(rs.getString("technical_title"));
 			bs.setPost(rs.getString("post"));
 			bs.setPolitical_outlook(rs.getString("political_outlook"));
 			bs.setSkill_level(rs.getString("skill_level"));
 			bs.setTechnical_qualification_one(rs.getString("technical_qualification_one"));
-			bs.setForensics_time_one(rs.getDate("forensics_time_one"));
-			bs.setFirst_review_time_one(rs.getDate("first_review_time_one"));
-			bs.setSecond_review_time_one(rs.getDate("second_review_time_one"));
-			bs.setThird_review_time_one(rs.getDate("third_review_time_one"));
+			bs.setForensics_time_one(rs.getString("forensics_time_one"));
+			bs.setFirst_review_time_one(rs.getString("first_review_time_one"));
+			bs.setSecond_review_time_one(rs.getString("second_review_time_one"));
+			bs.setThird_review_time_one(rs.getString("third_review_time_one"));
 			bs.setTechnical_qualification_two(rs.getString("technical_qualification_two"));
-			bs.setForensics_time_two(rs.getDate("forensics_time_two"));
-			bs.setFirst_review_time_two(rs.getDate("first_review_time_two"));
-			bs.setSecond_review_time_two(rs.getDate("secode_review_time_two"));
-			bs.setThird_review_time_two(rs.getDate("third_review_time_two"));
+			bs.setForensics_time_two(rs.getString("forensics_time_two"));
+			bs.setFirst_review_time_two(rs.getString("first_review_time_two"));
+			bs.setSecond_review_time_two(rs.getString("second_review_time_two"));
+			bs.setThird_review_time_two(rs.getString("third_review_time_two"));
 			
 			result.add(bs);//将结果封装到对象中
 		}

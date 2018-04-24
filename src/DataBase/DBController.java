@@ -16,7 +16,7 @@ public class DBController {
 	}
 	
 	//修改
-	public void  edit(Baseinfo baseinfo) throws Exception{
+	public void  update(Baseinfo baseinfo) throws Exception{
 		handleDB hDb = new handleDB();
 		hDb.updateBaseInfo(baseinfo);
 	}
@@ -43,24 +43,6 @@ public class DBController {
 	public List<Baseinfo> get(List<Map<String, Object>> params) throws Exception{
 		handleDB hDb = new handleDB();
 		return hDb.get(params);
-	}
-	
-	public void Test() throws Exception{
-		List<Map<String, Object>> params=new ArrayList<Map<String,Object>>();
-		Map<String, Object> param=new HashMap<String, Object>();
-		param.put("name", "name");
-		param.put("rela", "like");
-		param.put("value", "'%柳东伟%'");//注意加上单引号，因为这个变量是字符串的形式
-		params.add(param);
-		param=new HashMap<String, Object>();
-		param.put("name", "'%车办%'");
-		param.put("rela", "like");
-		param.put("value", "'%男%'");
-		handleDB hDb = new handleDB();
-		List<Baseinfo> list1 = hDb.get(params);
-		for(int i=0;i<list1.size();i++){
-			System.out.println(list1.get(i).toString());
-		}
 	}
 
 }

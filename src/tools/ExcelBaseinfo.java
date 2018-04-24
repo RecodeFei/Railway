@@ -21,12 +21,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * 
  * @author luyuan.zhong
  */
-public class ExcelDataRow {
+public class ExcelBaseinfo {
 	private Workbook wb;
 	private Sheet sheet;
 	private Row row;
 
-	public ExcelDataRow(String filepath) {
+	public ExcelBaseinfo(String filepath) {
 		if(filepath==null){
 			return;
 		}
@@ -66,7 +66,8 @@ public class ExcelDataRow {
 		String[] title = new String[colNum];
 		for (int i = 0; i < colNum; i++) {
 			// title[i] = getStringCellValue(row.getCell((short) i));
-			title[i] = row.getCell(i).getCellFormula();
+			row.getCell(i).setCellType(Cell.CELL_TYPE_STRING);  
+			title[i] = row.getCell(i).getStringCellValue();  
 		}
 		return title;
 	}

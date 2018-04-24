@@ -1,6 +1,5 @@
 package DataBase;
 
-import java.util.Date;
 /*
  * 基础类
  * owner:luyuan.zhong
@@ -14,13 +13,13 @@ public class Baseinfo {
 	
 	private String sex;
 	
-	private Date born;
+	private String born;
 	
 	private String age;
 	
 	private String education;
 	
-	private Date work_time;
+	private String work_time;
 	
 	private String technical_title;
 	
@@ -32,23 +31,23 @@ public class Baseinfo {
 	
 	private String technical_qualification_one;
 	
-	private Date forensics_time_one;
+	private String forensics_time_one;
 	
-	private Date first_review_time_one;
+	private String first_review_time_one;
 	
-	private Date second_review_time_one;
+	private String second_review_time_one;
 	
-	private Date third_review_time_one;
+	private String third_review_time_one;
 	
 	private String technical_qualification_two;
 	
-	private Date forensics_time_two;
+	private String forensics_time_two;
 	
-	private Date first_review_time_two;
+	private String first_review_time_two;
 	
-	private Date second_review_time_two;
+	private String second_review_time_two;
 	
-	private Date third_review_time_two;
+	private String third_review_time_two;
 	
 
 	
@@ -84,11 +83,11 @@ public class Baseinfo {
 		this.sex = sex;
 	}
 	
-	public Date getBorn(){
+	public String getBorn(){
 		return born;
 	}
 	
-	public void setBorn(Date born) {
+	public void setBorn(String born) {
 		this.born = born;
 	}
 	
@@ -108,11 +107,11 @@ public class Baseinfo {
 		this.education = education;
 	}
 	
-	public Date getWork_time(){
+	public String getWork_time(){
 		return work_time;
 	}
 	
-	public void setWork_time(Date work_time){
+	public void setWork_time(String work_time){
 		this.work_time = work_time;
 	}
 	
@@ -156,35 +155,35 @@ public class Baseinfo {
 		this.technical_qualification_one = technical_qualification_one;
 	}
 	
-	public Date getForensics_time_one(){
+	public String getForensics_time_one(){
 		return forensics_time_one;
 	}
 	
-	public void setForensics_time_one(Date forensics_time_one){
+	public void setForensics_time_one(String forensics_time_one){
 		this.forensics_time_one = forensics_time_one;
 	}
 	
-	public Date getFirst_review_time_one(){
+	public String getFirst_review_time_one(){
 		return first_review_time_one;
 	}
 	
-	public void setFirst_review_time_one(Date first_review_time_one){
+	public void setFirst_review_time_one(String first_review_time_one){
 		this.first_review_time_one = first_review_time_one;
 	}
 	
-	public Date getSecond_review_time_one(){
+	public String getSecond_review_time_one(){
 		return second_review_time_one;
 	}
 	
-	public void setSecond_review_time_one(Date second_review_time_one){
+	public void setSecond_review_time_one(String second_review_time_one){
 		this.second_review_time_one = second_review_time_one;
 	}
 	
-	public Date getThird_review_time_one(){
+	public String getThird_review_time_one(){
 		return third_review_time_one;
 	}
 	
-	public void setThird_review_time_one(Date third_review_time_one){
+	public void setThird_review_time_one(String third_review_time_one){
 		this.third_review_time_one = third_review_time_one;
 	}
 	
@@ -196,35 +195,35 @@ public class Baseinfo {
 		this.technical_qualification_two = technical_qualification_two;
 	}
 	
-	public Date getForensics_time_two(){
+	public String getForensics_time_two(){
 		return forensics_time_two;
 	}
 	
-	public void setForensics_time_two(Date forensics_time_two){
+	public void setForensics_time_two(String forensics_time_two){
 		this.forensics_time_two = forensics_time_two;
 	}
 	
-	public Date getFirst_review_time_two(){
+	public String getFirst_review_time_two(){
 		return first_review_time_two;
 	}
 	
-	public void setFirst_review_time_two(Date first_review_time_two){
+	public void setFirst_review_time_two(String first_review_time_two){
 		this.first_review_time_two = first_review_time_two;
 	}
 	
-	public Date getSecond_review_time_two(){
+	public String getSecond_review_time_two(){
 		return second_review_time_two;
 	}
 	
-	public void setSecond_review_time_two(Date second_review_time_two){
+	public void setSecond_review_time_two(String second_review_time_two){
 		this.second_review_time_two = second_review_time_two;
 	}
 	
-	public Date getThird_review_time_two(){
+	public String getThird_review_time_two(){
 		return third_review_time_two;
 	}
 	
-	public void setThird_review_time_two(Date third_review_time_two){
+	public void setThird_review_time_two(String third_review_time_two){
 		this.third_review_time_two = third_review_time_two;
 	}
 
