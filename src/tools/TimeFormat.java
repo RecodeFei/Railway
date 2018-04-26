@@ -9,6 +9,7 @@ public class TimeFormat {
 	public String timeformat(String realtime) throws ParseException{
 	   String returnStrnig;
 		if(realtime.equals("")){
+		
 			returnStrnig="";
 	   }else {
 		   SimpleDateFormat sdf1 = new SimpleDateFormat ("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK);

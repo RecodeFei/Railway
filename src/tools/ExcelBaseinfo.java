@@ -54,22 +54,14 @@ public class ExcelBaseinfo {
 	 * @return String 表头内容的数组
 	 * @author luyuan.zhong
 	 */
-	public String[] readExcelTitle() throws Exception{
+	public String readExcelTitle() throws Exception{
 		if(wb==null){
 			throw new Exception("Workbook对象为空！");
 		}
 		sheet = wb.getSheetAt(0);
 		row = sheet.getRow(0);
 		// 标题总列数
-		int colNum = row.getPhysicalNumberOfCells();
-		System.out.println("colNum:" + colNum);
-		String[] title = new String[colNum];
-		for (int i = 0; i < colNum; i++) {
-			// title[i] = getStringCellValue(row.getCell((short) i));
-			row.getCell(i).setCellType(Cell.CELL_TYPE_STRING);  
-			title[i] = row.getCell(i).getStringCellValue();  
-		}
-		return title;
+		return row.getCell(0).toString();
 	}
 
 	/**
@@ -85,7 +77,7 @@ public class ExcelBaseinfo {
 		}
 		Map<Integer, Map<Integer,Object>> content = new HashMap<Integer, Map<Integer,Object>>();
 		
-		sheet = wb.getSheetAt(0);
+		sheet = wb.getSheetAt(1);
 		// 得到总行数
 		int rowNum = sheet.getLastRowNum();
 		row = sheet.getRow(0);

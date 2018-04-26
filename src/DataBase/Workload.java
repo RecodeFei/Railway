@@ -30,7 +30,7 @@ public class Workload {
 	}
 	
 	public void setTime(String time){
-		this.team = time;
+		this.time = time;
 	}
 	
 	public String getTeam(){

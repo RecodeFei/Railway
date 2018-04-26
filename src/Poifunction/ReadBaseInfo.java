@@ -11,8 +11,10 @@ import java.util.Map;
 
 import org.apache.xmlbeans.impl.jam.mutable.MPackage;
 
+import DataBase.AccuracyHandle;
 import DataBase.Baseinfo;
 import DataBase.DBController;
+import DataBase.DBaccuracy;
 import DataBase.Workload;
 import DataBase.WorkloadDB;
 import DataBase.handleDB;
@@ -21,37 +23,50 @@ import tools.ExcelBaseinfo;
 import tools.TimeFormat;
 
 public class ReadBaseInfo {
-;
-	public static void main(String[] args) {  
+/*	public static void main(String[] args) throws Exception {  
+		String filepath = "/Users/feikuang/eclipse-workspace/Railway/doc/4.xlsx";
+		ExcelBaseinfo excelReader = new ExcelBaseinfo(filepath);  
+		Map<Integer, Map<Integer,Object>> map = excelReader.readExcelContent();
+		DBaccuracy dBaccuracy = new DBaccuracy();
+		AccuracyHandle accuracyHandle = new AccuracyHandle();
+		//System.out.println(excelReader.readExcelTitle().toString());
+		System.out.println("xxx");
+		for (int i = 2; i <= map.size(); i++) { 
+			System.out.println(map.get(i).get(6));		
+		}
+		
+	}
+	*/
+	/**
+	 * public static void main(String[] args) {  
        try {  
     		 String filepath;	
         	if (System.getProperties().getProperty("os.name").equals("Mac OS X")) {
-        		 filepath = "/Users/feikuang/eclipse-workspace/Railway/doc/2.xlsx";
+        		 filepath = "/Users/feikuang/eclipse-workspace/Railway/doc/6.xlsx";
         	}else {
-        		filepath = "/data/home/feikuang/workspace/Railway/doc/2.xlsx";
+        		filepath = "/data/home/feikuang/workspace/Railway/doc/6.xlsx";
 			}
         	ExcelBaseinfo excelReader = new ExcelBaseinfo(filepath);  
-                 String[] title = excelReader.readExcelTitle();  
-        	         System.out.println("获得Excel表格的标题:");  
-        	         for (String s : title) {  
-        	              System.out.print(s);         	       
-                  }  
+        	System.out.println(excelReader.readExcelTitle());
         	Baseinfo bs = new Baseinfo();
             handleDB db = new handleDB();
-            Workload workload = new Workload();
+            Map<Integer, Map<Integer,Object>> map = excelReader.readExcelContent();
+            /*Workload workload = new Workload();
             WorkloadDB workloadDB = new WorkloadDB();
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");	          
             Map<Integer, Map<Integer,Object>> map = excelReader.readExcelContent();
+           
            for (int i = 2; i <= map.size()-1; i++) { 
-        	   workload.setTime(title.toString());
+        	   workload.setTime(excelReader.readExcelTitle());
         	   workload.setTeam(map.get(i).get(1).toString());
         	   workload.setName(map.get(i).get(2).toString());
         	   workload.setNum(map.get(i).get(3).toString());
         	   workloadDB.addWorkload(workload);
-        	   
+        
                 //Date birthday = df.parse(formatDate);
               // System.out.println(birthday);
-               /* bs.setTeam(map.get(i).get(1).toString());
+            for (int i = 2; i <= map.size()-1; i++) { 
+                bs.setTeam(map.get(i).get(1).toString());
                 bs.setName(map.get(i).get(2).toString());
                 bs.setSex(map.get(i).get(3).toString()); 
 	            bs.setBorn(new TimeFormat().timeformat(map.get(i).get(4).toString()));
@@ -65,6 +80,7 @@ public class ReadBaseInfo {
                 bs.setTechnical_qualification_one(map.get(i).get(12).toString());
                 bs.setForensics_time_one(new TimeFormat().timeformat(map.get(i).get(13).toString()));
                 bs.setFirst_review_time_one(new TimeFormat().timeformat(map.get(i).get(14).toString()));
+               
                 bs.setSecond_review_time_one(new TimeFormat().timeformat(map.get(i).get(15).toString()));
                 bs.setThird_review_time_one(new TimeFormat().timeformat(map.get(i).get(16).toString()));
                 bs.setTechnical_qualification_two(map.get(i).get(17).toString());
@@ -72,7 +88,7 @@ public class ReadBaseInfo {
                 bs.setFirst_review_time_two(new TimeFormat().timeformat(map.get(i).get(19).toString()));
                 bs.setSecond_review_time_two(new TimeFormat().timeformat(map.get(i).get(20).toString()));
                 bs.setThird_review_time_two(new TimeFormat().timeformat(map.get(i).get(21).toString()));                           
-                db.addBaseInfo(bs);*/
+                db.addBaseInfo(bs);
             }  
        
             
@@ -80,5 +96,8 @@ public class ReadBaseInfo {
             e.printStackTrace();  
         }  
     }
-      
+	  
+	  */
+	
+	
 }
