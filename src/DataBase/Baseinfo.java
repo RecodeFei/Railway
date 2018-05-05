@@ -4,7 +4,7 @@ package DataBase;
  * 基础类
  * owner:luyuan.zhong
  */
-public class Baseinfo {
+public class BaseInfo {
 	private Integer id;
 	
 	private String team;

@@ -17,8 +17,8 @@ public class AccuracyHandle {
 	 * @param bi
 	 * @throws Exception
 	 */
-	public List<DBaccuracy> query() throws SQLException{
-		List<DBaccuracy> DBaccuracylist = new ArrayList<DBaccuracy>();
+	public List<AccuracyInfo> query() throws SQLException{
+		List<AccuracyInfo> DBaccuracylist = new ArrayList<AccuracyInfo>();
 		//获取数据库连接
 		Connection conn = DBUtil.getConnection();
 		
@@ -28,10 +28,10 @@ public class AccuracyHandle {
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		
 		ResultSet rs = ptmt.executeQuery();
-		DBaccuracy DBaccuracy = null;
+		AccuracyInfo DBaccuracy = null;
 		
 		while (rs.next()){
-			DBaccuracy = new DBaccuracy();
+			DBaccuracy = new AccuracyInfo();
 			DBaccuracy.setId(rs.getInt("id"));
 			DBaccuracy.setTime(rs.getString("time"));
 			DBaccuracy.setTeam(rs.getString("team"));
@@ -49,12 +49,12 @@ public class AccuracyHandle {
 	 */
 	
 	@SuppressWarnings("deprecation")
-	public void addDBaccuracy(DBaccuracy DBaccuracy) throws Exception{
+	public void addDBaccuracy(AccuracyInfo DBaccuracy) throws Exception{
 		//获取数据库连接
 		Connection conn = DBUtil.getConnection();
 		
 		String sql = "insert into railway_accuracy_rate(time,team,name,accuracy)values(?,?,?,?)";
-		//String sql = "insert into railway(team,name,sex)value(?,?,?)";
+		
 		PreparedStatement ptmt = conn.prepareStatement(sql);
 		ptmt.setString(1, DBaccuracy.getTime());
 		ptmt.setString(2, DBaccuracy.getTeam());
@@ -70,7 +70,7 @@ public class AccuracyHandle {
 	 * @throws SQLException
 	 */
 	
-	public void updateDBaccuracy(DBaccuracy DBaccuracy) throws SQLException{
+	public void updateDBaccuracy(AccuracyInfo DBaccuracy) throws SQLException{
 		Connection con = DBUtil.getConnection();//拿到数据库连接
 		String sql="" +
 				"update railway_accuracy_rate "+
@@ -118,8 +118,8 @@ public class AccuracyHandle {
 	 * @return
 	 */
 	
-	public DBaccuracy get(Integer id) throws SQLException{
-		DBaccuracy bs = null;
+	public AccuracyInfo get(Integer id) throws SQLException{
+		AccuracyInfo bs = null;
 		Connection con = DBUtil.getConnection();
 		String sql=""+
 				"select * from railway_DBaccuracy "+
@@ -133,7 +133,7 @@ public class AccuracyHandle {
 		ResultSet rs = ptmt.executeQuery();//返回一个结果集
 		//遍历结果集
 		while(rs.next()){
-			bs = new DBaccuracy();
+			bs = new AccuracyInfo();
 			bs.setId(rs.getInt("id"));
 			bs.setTime(rs.getString("time"));
 			bs.setTeam(rs.getString("team"));
@@ -148,8 +148,8 @@ public class AccuracyHandle {
 	 * 根据姓名等查询
 	 */
 	
-	public List<DBaccuracy> get(List<Map<String, Object>> params) throws SQLException{
-		List<DBaccuracy> result = new ArrayList<DBaccuracy>();
+	public List<AccuracyInfo> get(List<Map<String, Object>> params) throws SQLException{
+		List<AccuracyInfo> result = new ArrayList<AccuracyInfo>();
 		Connection con = DBUtil.getConnection();
 		StringBuffer sBuffer = new StringBuffer();
 		sBuffer.append("select * from railway_accuracy_rate where 1=1 ");//注意where 1=1 的小技巧
@@ -164,10 +164,10 @@ public class AccuracyHandle {
 		PreparedStatement ptmt = con.prepareStatement(sBuffer.toString());
 		System.out.println(sBuffer.toString());
 		ResultSet rs = ptmt.executeQuery();
-		DBaccuracy bs = null;
+		AccuracyInfo bs = null;
 		//遍历结果集
 		while(rs.next()){
-			bs = new DBaccuracy();
+			bs = new AccuracyInfo();
 			bs.setId(rs.getInt("id"));
 			bs.setTime(rs.getString("time"));
 			bs.setTeam(rs.getString("team"));

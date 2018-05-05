@@ -63,6 +63,16 @@ public class ExcelBaseinfo {
 		// 标题总列数
 		return row.getCell(0).toString();
 	}
+	
+	public String readSheetTitle() throws Exception{
+		if (wb == null) {
+			throw new Exception("Workbook对象为空！");
+	}
+		sheet = wb.getSheetAt(0);
+		return sheet.getSheetName();
+	}
+		
+	 
 
 	/**
 	 * 读取Excel数据内容
@@ -77,7 +87,7 @@ public class ExcelBaseinfo {
 		}
 		Map<Integer, Map<Integer,Object>> content = new HashMap<Integer, Map<Integer,Object>>();
 		
-		sheet = wb.getSheetAt(1);
+		sheet = wb.getSheetAt(0);
 		// 得到总行数
 		int rowNum = sheet.getLastRowNum();
 		row = sheet.getRow(0);

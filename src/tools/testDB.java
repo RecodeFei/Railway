@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import DataBase.Baseinfo;
-import DataBase.DBController;
+import DataBase.BaseController;
+import DataBase.BaseInfo;
+import DataBase.BaseInfo;
+import DataBase.BaseHandle;
 /*
 team;
 name;
@@ -33,8 +35,8 @@ third_review_time_two;
 public class testDB {
 
 	public void addtest() throws Exception{
-		Baseinfo baseinfoadd = new Baseinfo();
-		DBController dbControlleradd = new DBController();
+		BaseInfo baseinfoadd = new BaseInfo();
+		BaseController dbControlleradd = new BaseController();
 		baseinfoadd.setTeam("framework");
 		baseinfoadd.setName("匡斐");
 		baseinfoadd.setSex("男");
@@ -60,8 +62,8 @@ public class testDB {
 	}
 	
 	public void updatetest() throws Exception{
-		Baseinfo baseinfoupdate = new Baseinfo();
-		DBController dbControllerupdate = new DBController();
+		BaseInfo baseinfoupdate = new BaseInfo();
+		BaseController dbControllerupdate = new BaseController();
 		baseinfoupdate.setId(91);
 		baseinfoupdate.setTeam("framework");
 		baseinfoupdate.setName("匡ss斐1122221");
@@ -89,22 +91,23 @@ public class testDB {
 	}
 	
 	public void deltest() throws Exception{
-		DBController dbControllerdel = new DBController();
+		BaseController dbControllerdel = new BaseController();
 		dbControllerdel.del(93);
 	}
 	
 	public void queryAll() throws Exception{
-		DBController dbControllerqueryall = new DBController();
-		List<Baseinfo> baseinfos = dbControllerqueryall.query();
-		for(Baseinfo baseinfo : baseinfos){
+		BaseController dbControllerqueryall = new BaseController();
+		List<BaseInfo> baseinfos = dbControllerqueryall.query();
+		for(BaseInfo baseinfo : baseinfos){
 			System.out.println(baseinfo.getTeam()+' '+baseinfo.getName());
 		}
 	}
 	
-	public void queryByid() throws Exception{
-		DBController dbControllerByid = new DBController();
-		Baseinfo baseinfo = dbControllerByid.get(90);
-		System.out.println(baseinfo.getName().toString());
+	public String queryByid() throws Exception{
+		BaseController dbControllerByid = new BaseController();
+		BaseInfo baseinfo = dbControllerByid.get(89);
+		return baseinfo.getName().toString();
+		//System.out.println(baseinfo.getName().toString());
 	}
 	
 	public void queryByName() throws Exception{
@@ -115,8 +118,8 @@ public class testDB {
 		param.put("value", "'匡斐'");//注意加上单引号，因为这个变量是字符串的形式
 		params.add(param);
 		
-		DBController dbControllerByname = new DBController();
-		List<Baseinfo> list = dbControllerByname.get(params);
+		BaseController dbControllerByname = new BaseController();
+		List<BaseInfo> list = dbControllerByname.get(params);
 		for (int i=0; i<list.size();i++){
 			System.out.println(list.get(i).getAge().toString());
 		}
