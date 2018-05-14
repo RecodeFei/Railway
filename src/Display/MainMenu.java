@@ -34,8 +34,21 @@ public class MainMenu extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @return 
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainMenu frame = new MainMenu();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}*/
+	public void MainMenuDisplay(){
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
