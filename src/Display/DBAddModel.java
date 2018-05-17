@@ -63,12 +63,13 @@ public class DBAddModel {
         Map<Integer, Map<Integer,Object>> map = excelReader.readExcelContent();
         WorkloadInfo workload = new WorkloadInfo();
         WorkloadHandle workloadDB = new WorkloadHandle();   
-       for (int i = 2; i <= map.size()-1; i++) { 
+       for (int i = 2; i <= map.size(); i++) { 
     	   workload.setTime(excelReader.readExcelTitle());
     	   workload.setTeam(map.get(i).get(1).toString());
     	   workload.setName(map.get(i).get(2).toString());
     	   workload.setNum(map.get(i).get(3).toString());
     	   workloadDB.addWorkload(workload);
+    	   
 	}
 }
 
