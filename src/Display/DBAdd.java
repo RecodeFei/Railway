@@ -44,7 +44,7 @@ public class DBAdd extends JFrame {
 	
 	public String FilePath(){
 		String filePath = null;
-		JFileChooser fileChooser = new JFileChooser("/home");
+		JFileChooser fileChooser = new JFileChooser("/home/feikuang/workspace/Railway/doc");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             int returnVal = fileChooser.showOpenDialog(fileChooser);
                         if(returnVal == JFileChooser.APPROVE_OPTION){       

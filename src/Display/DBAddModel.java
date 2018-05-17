@@ -27,7 +27,6 @@ public class DBAddModel {
 	public void AddBaseInfoToDb(String filePath) throws Exception {
 		// TODO Auto-generated method stub	
        	ExcelBaseinfo excelReader = new ExcelBaseinfo(filePath);  
-       	System.out.println(excelReader.readExcelTitle());
        	BaseInfo bs = new BaseInfo();
         BaseHandle db = new BaseHandle();
            Map<Integer, Map<Integer,Object>> map = excelReader.readExcelContent();
@@ -52,8 +51,9 @@ public class DBAddModel {
                bs.setForensics_time_two(new TimeFormat().timeformat(map.get(i).get(18).toString()));
                bs.setFirst_review_time_two(new TimeFormat().timeformat(map.get(i).get(19).toString()));
                bs.setSecond_review_time_two(new TimeFormat().timeformat(map.get(i).get(20).toString()));
-               bs.setThird_review_time_two(new TimeFormat().timeformat(map.get(i).get(21).toString()));                           
-               db.addBaseInfo(bs);
+               bs.setThird_review_time_two(new TimeFormat().timeformat(map.get(i).get(21).toString()));     
+               
+               db.addBaseInfo(bs);              
            }       
 	}
 
