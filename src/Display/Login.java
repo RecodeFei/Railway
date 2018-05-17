@@ -52,6 +52,8 @@ public void actionPerformed(ActionEvent e){
 		}
 		if(jtxtName.getText().equals("root")&&String.valueOf(jtxtPassword.getPassword()).equals("root")){
 			//跳转到数据库界面
+			DBAdd dbAdd = new DBAdd();
+			dbAdd.DBAddDisplay();
 		}
 		
 	}else{
