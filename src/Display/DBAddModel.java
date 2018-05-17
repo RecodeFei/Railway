@@ -79,9 +79,9 @@ public class DBAddModel {
 		Map<Integer, Map<Integer,Object>> map = excelReader.readExcelContent();
 		FindfaultInfo findfaultInfo = new FindfaultInfo();
 		FindfaultHandle findfaultHandle = new FindfaultHandle();
-		for(int i=2; i<=map.size(); i++) {
+		for(int i=1; i<=map.size(); i++) {
 			findfaultInfo.setTime(excelReader.readSheetTitle());
-			findfaultInfo.setDate(map.get(i).get(1).toString());
+			findfaultInfo.setDate(new TimeFormat().timeformat(map.get(i).get(1).toString()));
 			findfaultInfo.setCar_type(map.get(i).get(2).toString());
 			findfaultInfo.setFault_name(map.get(i).get(3).toString());
 			findfaultInfo.setFault_type(map.get(i).get(4).toString());
@@ -90,6 +90,8 @@ public class DBAddModel {
 			findfaultInfo.setMoney(map.get(i).get(7).toString());
 			
 			findfaultHandle.addFindfaultInfo(findfaultInfo);
+	
+			
 	}
 }
 
@@ -99,11 +101,11 @@ public class DBAddModel {
 		Map<Integer, Map<Integer,Object>> map = excelReader.readExcelContent();
 		AccuracyInfo accuracyInfo = new AccuracyInfo();
 		AccuracyHandle accuracyHandle = new AccuracyHandle();
-		for (int i = 2; i <= map.size(); i++) { 
+		for (int i = 1; i <= map.size(); i++) { 
 			accuracyInfo.setTime(excelReader.readSheetTitle());
-			accuracyInfo.setTeam(map.get(i).get(2).toString());
-			accuracyInfo.setName(map.get(i).get(3).toString());
-			accuracyInfo.setAccuracy(map.get(i).get(4).toString());
+			accuracyInfo.setTeam(map.get(i).get(1).toString());
+			accuracyInfo.setName(map.get(i).get(2).toString());
+			accuracyInfo.setAccuracy(map.get(i).get(3).toString());
 			
 			accuracyHandle.addDBaccuracy(accuracyInfo);
 		}
