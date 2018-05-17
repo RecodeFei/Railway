@@ -13,6 +13,8 @@ public class ImportInfo {
 
 	public Integer id;
 	
+	public String time;
+	
 	public String operation;
 	
 	public String workshop;
@@ -65,7 +67,21 @@ public class ImportInfo {
 	
 	public String operation2;
 	
-	public String sheet;
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public String getTime(){
+		return time;
+	}
+	
+	public void setTime(String time){
+		this.time = time;
+	}
 	
 	public String getOperation() {
 		return operation;
@@ -277,21 +293,8 @@ public class ImportInfo {
 
 
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	
-	public String getSheet() {
-		return sheet;
-	}
-
-	public void setSheet(String sheet) {
-		this.sheet = sheet;
-	}
 	
 	
 }

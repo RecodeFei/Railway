@@ -119,13 +119,14 @@ public class DBAddModel {
 		ImportHandle importHandle = new ImportHandle();
 		TimeFormat timeFormat = new TimeFormat();
 		for(int i=1; i<=map.size(); i++) {
+			bs.setTime(excelReader.readSheetTitle());
 			bs.setOperation(map.get(i).get(1).toString());
 			bs.setWorkshop(map.get(i).get(2).toString());
 			bs.setEntry_time(timeFormat.timeformat(map.get(i).get(3).toString()));
 			bs.setDetection_station(map.get(i).get(4).toString());
 			bs.setTeam(map.get(i).get(5).toString());
 			bs.setDate(timeFormat.timeformat(map.get(i).get(6).toString()));
-			bs.setArrival_time(timeFormat.timeformat(map.get(i).get(6).toString()));
+			bs.setArrival_time(timeFormat.timeformatAnther(map.get(i).get(7).toString()));
 			bs.setCrux(map.get(i).get(8).toString());
 			bs.setTrain_number(map.get(i).get(9).toString());
 			bs.setMarshalling_number(map.get(i).get(10).toString());
@@ -145,9 +146,9 @@ public class DBAddModel {
 			bs.setReinspection_fault_type(map.get(i).get(24).toString());
 			bs.setReinspection_time(timeFormat.timeformat(map.get(i).get(25).toString()));
 			bs.setOperation2(map.get(i).get(26).toString());
-			bs.setSheet(excelReader.readSheetTitle());
-			
+					
 			importHandle.addImportinfo(bs);
+
 	}
 	}
 }

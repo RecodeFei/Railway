@@ -22,7 +22,7 @@ public class ImportHandle {
 		Connection conn = DBUtil.getConnection();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("select id,operation,workshop,entry_time,detection_station,team,date,arrival_time,crux,train_number,marshalling_number,digit,car_number,fault_name,fault_type,leak_detection_station,leader,spot_inspection_department,spot_checker,tip,reinspection_department,reinspector,reinspection_vehicle_number,reinspection_fault_name,reinspection_fault_type,reinspection_time,operation2,sheet from railway_import");
+		sb.append("select id,time,operation,workshop,entry_time,detection_station,team,date,arrival_time,crux,train_number,marshalling_number,digit,car_number,fault_name,fault_type,leak_detection_station,leader,spot_inspection_department,spot_checker,tip,reinspection_department,reinspector,reinspection_vehicle_number,reinspection_fault_name,reinspection_fault_type,reinspection_time,operation2 from railway_import");
 		//通过数据库的连接操作数据库，实现增删改查
 		PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 		
@@ -32,6 +32,7 @@ public class ImportHandle {
 		while (rs.next()){
 			ImportInfo importinfo  = new ImportInfo();
 			importinfo.setId(rs.getInt("id"));
+			importinfo.setTime(rs.getString("time"));
 			importinfo.setOperation(rs.getString("operation"));
 			importinfo.setWorkshop(rs.getString("workshop"));
 			importinfo.setEntry_time(rs.getString("entry_time"));
@@ -58,7 +59,7 @@ public class ImportHandle {
 			importinfo.setReinspection_fault_type(rs.getString("reinspection_fault_type"));
 			importinfo.setReinspection_time(rs.getString("reinspection_time"));
 			importinfo.setOperation2(rs.getString("operation2"));
-			importinfo.setSheet(rs.getString("sheet"));
+			
 			
 			
 			ImportinfoList.add(importinfo);
@@ -77,36 +78,37 @@ public class ImportHandle {
 		//获取数据库连接
 		Connection conn = DBUtil.getConnection();
 		
-		String sql = "insert into railway_import(operation,workshop,entry_time,detection_station,team,date,arrival_time,crux,train_number,marshalling_number,digit,car_number,fault_name,fault_type,leak_detection_station,leader,spot_inspection_department,spot_checker,tip,reinspection_department,reinspector,reinspection_vehicle_number,reinspection_fault_name,reinspection_fault_type,reinspection_time,operation2,sheet)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into railway_import(time,operation,workshop,entry_time,detection_station,team,date,arrival_time,crux,train_number,marshalling_number,digit,car_number,fault_name,fault_type,leak_detection_station,leader,spot_inspection_department,spot_checker,tip,reinspection_department,reinspector,reinspection_vehicle_number,reinspection_fault_name,reinspection_fault_type,reinspection_time,operation2)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		//String sql = "insert into railway(team,name,sex)value(?,?,?)";
 		PreparedStatement ptmt = conn.prepareStatement(sql);
-		ptmt.setString(1, importinfo.getOperation());
-		ptmt.setString(2, importinfo.getWorkshop());
-		ptmt.setString(3, importinfo.getEntry_time());
-		ptmt.setString(4, importinfo.getDetection_station());
-		ptmt.setString(5, importinfo.getTeam());
-		ptmt.setString(6, importinfo.getDate());
-		ptmt.setString(7, importinfo.getArrival_time());
-		ptmt.setString(8, importinfo.getCrux());
-		ptmt.setString(9, importinfo.getTrain_number());
-		ptmt.setString(10, importinfo.getMarshalling_number());
-		ptmt.setString(11, importinfo.getDigit());
-		ptmt.setString(12, importinfo.getCar_number());
-		ptmt.setString(13, importinfo.getFault_name());
-		ptmt.setString(14, importinfo.getFault_type());
-		ptmt.setString(15, importinfo.getLeak_detection_station());
-		ptmt.setString(16, importinfo.getLeader());
-		ptmt.setString(17, importinfo.getSpot_inspection_department());
-		ptmt.setString(18, importinfo.getSpot_checker());
-		ptmt.setString(19, importinfo.getTip());
-		ptmt.setString(20, importinfo.getReinspection_department());
-		ptmt.setString(21, importinfo.getReinspector());
-		ptmt.setString(22, importinfo.getReinspection_vehicle_number());
-		ptmt.setString(23, importinfo.getReinspection_fault_name());
-		ptmt.setString(24, importinfo.getReinspection_fault_type());
-		ptmt.setString(25,importinfo.getReinspection_time());
-		ptmt.setString(26, importinfo.getOperation2());
-		ptmt.setString(27, importinfo.getSheet());
+		ptmt.setString(1, importinfo.getTime());
+		ptmt.setString(2, importinfo.getOperation());
+		ptmt.setString(3, importinfo.getWorkshop());
+		ptmt.setString(4, importinfo.getEntry_time());
+		ptmt.setString(5, importinfo.getDetection_station());
+		ptmt.setString(6, importinfo.getTeam());
+		ptmt.setString(7, importinfo.getDate());
+		ptmt.setString(8, importinfo.getArrival_time());
+		ptmt.setString(9, importinfo.getCrux());
+		ptmt.setString(10, importinfo.getTrain_number());
+		ptmt.setString(11, importinfo.getMarshalling_number());
+		ptmt.setString(12, importinfo.getDigit());
+		ptmt.setString(13, importinfo.getCar_number());
+		ptmt.setString(14, importinfo.getFault_name());
+		ptmt.setString(15, importinfo.getFault_type());
+		ptmt.setString(16, importinfo.getLeak_detection_station());
+		ptmt.setString(17, importinfo.getLeader());
+		ptmt.setString(18, importinfo.getSpot_inspection_department());
+		ptmt.setString(19, importinfo.getSpot_checker());
+		ptmt.setString(20, importinfo.getTip());
+		ptmt.setString(21, importinfo.getReinspection_department());
+		ptmt.setString(22, importinfo.getReinspector());
+		ptmt.setString(23, importinfo.getReinspection_vehicle_number());
+		ptmt.setString(24, importinfo.getReinspection_fault_name());
+		ptmt.setString(25, importinfo.getReinspection_fault_type());
+		ptmt.setString(26,importinfo.getReinspection_time());
+		ptmt.setString(27, importinfo.getOperation2());
+		
 	
 		ptmt.execute();
 	}
@@ -121,11 +123,11 @@ public class ImportHandle {
 		Connection con = DBUtil.getConnection();//拿到数据库连接
 		String sql="" +
 				"update railway_import "+
-				"set operation=?,workshop=?,entry_time=?,detection_station=?,team,date=?,arrival_time=?,"
+				"set time=?,operation=?,workshop=?,entry_time=?,detection_station=?,team,date=?,arrival_time=?,"
 				+ "crux,train_number=?,marshalling_number=?,digit=?,car_number=?,fault_name=?,fault_typ=?,"
 				+ "leak_detection_station=?,leader=?,spot_inspection_department=?,spot_checker=?,"
 				+ "tip=?,reinspection_department=?,reinspector=?,reinspection_vehicle_number=?,"
-				+ "reinspection_fault_name=?,reinspection_fault_type=?,reinspection_time=?,operation2=?,sheet=? "+
+				+ "reinspection_fault_name=?,reinspection_fault_type=?,reinspection_time=?,operation2=? "+
 				"where id=?";//参数用?表示，相当于占位符;
 		/*String sql="" +
 				"update railway "+
@@ -135,33 +137,33 @@ public class ImportHandle {
 		System.out.println(sql.toString());
 		PreparedStatement ptmt = con.prepareStatement(sql);
 		//先对应SQL语句，给sql语句传递参数
-		ptmt.setString(1, importinfo.getOperation());
-		ptmt.setString(2, importinfo.getWorkshop());
-		ptmt.setString(3, importinfo.getEntry_time());
-		ptmt.setString(4, importinfo.getDetection_station());
-		ptmt.setString(5, importinfo.getTeam());
-		ptmt.setString(6, importinfo.getDate());
-		ptmt.setString(7, importinfo.getArrival_time());
-		ptmt.setString(8, importinfo.getCrux());
-		ptmt.setString(9, importinfo.getTrain_number());
-		ptmt.setString(10, importinfo.getMarshalling_number());
-		ptmt.setString(11, importinfo.getDigit());
-		ptmt.setString(12, importinfo.getCar_number());
-		ptmt.setString(13, importinfo.getFault_name());
-		ptmt.setString(14, importinfo.getFault_type());
-		ptmt.setString(15, importinfo.getLeak_detection_station());
-		ptmt.setString(16, importinfo.getLeader());
-		ptmt.setString(17, importinfo.getSpot_inspection_department());
-		ptmt.setString(18, importinfo.getSpot_checker());
-		ptmt.setString(19, importinfo.getTip());
-		ptmt.setString(20, importinfo.getReinspection_department());
-		ptmt.setString(21, importinfo.getReinspector());
-		ptmt.setString(22, importinfo.getReinspection_vehicle_number());
-		ptmt.setString(23, importinfo.getReinspection_fault_name());
-		ptmt.setString(24, importinfo.getReinspection_fault_type());
-		ptmt.setString(25,importinfo.getReinspection_time());
-		ptmt.setString(26, importinfo.getOperation2());
-		ptmt.setString(27, importinfo.getSheet());
+		ptmt.setString(1, importinfo.getTime());
+		ptmt.setString(2, importinfo.getOperation());
+		ptmt.setString(3, importinfo.getWorkshop());
+		ptmt.setString(4, importinfo.getEntry_time());
+		ptmt.setString(5, importinfo.getDetection_station());
+		ptmt.setString(6, importinfo.getTeam());
+		ptmt.setString(7, importinfo.getDate());
+		ptmt.setString(8, importinfo.getArrival_time());
+		ptmt.setString(9, importinfo.getCrux());
+		ptmt.setString(10, importinfo.getTrain_number());
+		ptmt.setString(11, importinfo.getMarshalling_number());
+		ptmt.setString(12, importinfo.getDigit());
+		ptmt.setString(13, importinfo.getCar_number());
+		ptmt.setString(14, importinfo.getFault_name());
+		ptmt.setString(15, importinfo.getFault_type());
+		ptmt.setString(16, importinfo.getLeak_detection_station());
+		ptmt.setString(17, importinfo.getLeader());
+		ptmt.setString(18, importinfo.getSpot_inspection_department());
+		ptmt.setString(19, importinfo.getSpot_checker());
+		ptmt.setString(20, importinfo.getTip());
+		ptmt.setString(21, importinfo.getReinspection_department());
+		ptmt.setString(22, importinfo.getReinspector());
+		ptmt.setString(23, importinfo.getReinspection_vehicle_number());
+		ptmt.setString(24, importinfo.getReinspection_fault_name());
+		ptmt.setString(25, importinfo.getReinspection_fault_type());
+		ptmt.setString(26,importinfo.getReinspection_time());
+		ptmt.setString(27, importinfo.getOperation2());
 		
 		ptmt.setInt(28, importinfo.getId());
 		
@@ -211,6 +213,7 @@ public class ImportHandle {
 
 			bs = new ImportInfo();
 			bs.setId(rs.getInt("id"));
+			bs.setTime(rs.getString("time"));
 			bs.setOperation(rs.getString("operation"));
 			bs.setWorkshop(rs.getString("workshop"));
 			bs.setEntry_time(rs.getString("entry_time"));
@@ -237,7 +240,7 @@ public class ImportHandle {
 			bs.setReinspection_fault_type(rs.getString("reinspection_fault_type"));
 			bs.setReinspection_time(rs.getString("reinspection_time"));
 			bs.setOperation2(rs.getString("operation2"));
-			bs.setSheet(rs.getString("sheet"));
+			
 			
 			
 			
@@ -271,6 +274,7 @@ public class ImportHandle {
 		while(rs.next()){
 			bs = new ImportInfo();
 			bs.setId(rs.getInt("id"));
+			bs.setTime(rs.getString("time"));
 			bs.setOperation(rs.getString("operation"));
 			bs.setWorkshop(rs.getString("workshop"));
 			bs.setEntry_time(rs.getString("entry_time"));
@@ -297,7 +301,7 @@ public class ImportHandle {
 			bs.setReinspection_fault_type(rs.getString("reinspection_fault_type"));
 			bs.setReinspection_time(rs.getString("reinspection_time"));
 			bs.setOperation2(rs.getString("operation2"));
-			bs.setSheet(rs.getString("sheet"));
+			
 			
 			result.add(bs);//将结果封装到对象中
 		}
